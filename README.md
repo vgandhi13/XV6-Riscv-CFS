@@ -25,6 +25,11 @@ The following functions were added to the proc.c file:
 3. `void updateInsertedProcessandTreeProperties(struct redblackTree* tree, struct proc* p)`: This function updates the minimum virtual runtime node that `tree->min_vRuntime` points to. It also calculates process weight and total weight of the tree based on the `niceness` value.
 4. `void recolorAndRotate(struct redblackTree* tree, struct proc* p)`: Perform recoloring and rotation on the Red Black Tree to ensure all violations of RBT properties are solved.
 5. `struct proc* getMinimumVRuntimeproc(struct proc* traversingProcess)`: Recursive Depth First Search function that finds the left-most node in the Red Black Tree.
+6. `void updateTree(struct redblackTree* tree, struct proc* parent,struct proc* uncle,struct proc* grandpa)`: Flips the node colors of the parent, uncle and grandfather nodes of a particular node in the Red Black Tree.
+7. `void LandLRSituations(struct redblackTree* tree, struct proc* p,struct proc* parent,struct proc* grandpa)`: Handles situations where new process is added to the left subtree.
+8. `void RandRLSituations(struct redblackTree* tree, struct proc* p,struct proc* parent,struct proc* grandpa)`: Handles situations where new process is added to the right subtree.
+9. `void L_Rotation(struct redblackTree* rbt, struct proc* curProc)`: Performs rotation such that the curProc is moved leftward in the Red Black Tree
+10. `void R_Rotation(struct redblackTree* rbt, struct proc* curProc)`: Performs rotation such that the curProc is moved rightward in the Red Black Tree
 ## Running the Code
 
 To run the code, follow these steps:
