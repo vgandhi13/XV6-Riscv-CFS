@@ -37,9 +37,8 @@ The following functions were added to the proc.c file:
 
 To run the code, follow these steps:
 
-1. Clone the repository or download the zip file.
+1. Download the Riscv toolchain: https://pdos.csail.mit.edu/6.S081/2021/tools.html
 2. Build the code by running `make`.
-3. Execute the command `./allocator_app`.
-4. The results for both `my_malloc.cpp` and `buddy_malloc.cpp` will be displayed.
+3. Execute the command `make qemu`.
 
 If you have any questions regarding this project, feel free to email me at vgandhi@umass.edu.
