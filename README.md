@@ -31,6 +31,8 @@ The following functions were added to the proc.c file:
 9. `void L_Rotation(struct redblackTree* rbt, struct proc* curProc)`: Performs rotation such that the curProc is moved leftward in the Red Black Tree
 10. `void R_Rotation(struct redblackTree* rbt, struct proc* curProc)`: Performs rotation such that the curProc is moved rightward in the Red Black Tree
 11. `void handleDeletionOfLeftmostNodeAndUpdateTree(struct redblackTree* tree, struct proc* p)`: Handles the situation when the leftmost node in the Red Black Tree needs to be removed to be scheduled
+
+Here is the code for the Rust library with the code for scheduler in Rust: https://github.com/vgandhi13/XV6-Rust-Library
 ## Running the Code
 
 To run the code, follow these steps:
