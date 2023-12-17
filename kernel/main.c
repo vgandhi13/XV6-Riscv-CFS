@@ -29,7 +29,8 @@ main()
     fileinit();      // file table
     virtio_disk_init(); // emulated hard disk
     userinit();      // first user process
-    __sync_synchronize();
+    __sync_synchronize();  //makes sure everything above is finished 
+    // by compiler before started is assigned to 1
     started = 1;
   } else {
     while(started == 0)
