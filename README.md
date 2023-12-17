@@ -9,8 +9,9 @@ Kindly go through the presentation slides along with the README file to better u
 
 The following functions were added to the proc.c file:
 
-1. `insertProcess(struct redblackTree* tree, struct proc* p)`: Inserts a new process `p` into a red-black tree (`tree`) This function is invoked in critical sections of the operating system, such as during the initialization of the first user process (`userinit`), the creation of a new process (`fork`), yielding the CPU to another process (`yield`), waking up processes from sleep (`wakeup`), and terminating a process (`kill`):
-2. `treenode_insertion(struct proc* curProc, struct proc* newProc)`: This is a Depth First Search algorithm function that checks where to insert the new process in the red black tree based on the virtual runtime.
+1. `void insertProcess(struct redblackTree* tree, struct proc* p)`: Inserts a new process `p` into a red-black tree (`tree`) This function is invoked in critical sections of the operating system, such as during the initialization of the first user process (`userinit`), the creation of a new process (`fork`), yielding the CPU to another process (`yield`), waking up processes from sleep (`wakeup`), and terminating a process (`kill`):
+2. `void treenode_insertion(struct proc* curProc, struct proc* newProc)`: This is a Depth First Search algorithm function that checks where to insert the new process in the red black tree based on the virtual runtime.
+3. `void updateInsertedProcessandTreeProperties(struct redblackTree* tree, struct proc* p)`: This function updates the minimum virtual runtime node that `tree->min_vRuntime` points to. It also calculates process weight and total weight calculation of the tree based on the `niceness` value.
 ## Running the Code
 
 To run the code, follow these steps:
