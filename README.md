@@ -31,7 +31,9 @@ The following functions were added to the proc.c file:
 8. `void RandRLSituations(struct redblackTree* tree, struct proc* p,struct proc* parent,struct proc* grandpa)`: Handles situations where new process is added to the right subtree.
 9. `void L_Rotation(struct redblackTree* rbt, struct proc* curProc)`: Performs rotation such that the curProc is moved leftward in the Red Black Tree
 10. `void R_Rotation(struct redblackTree* rbt, struct proc* curProc)`: Performs rotation such that the curProc is moved rightward in the Red Black Tree
-11. `void handleDeletionOfLeftmostNodeAndUpdateTree(struct redblackTree* tree, struct proc* p)`: Handles the situation when the leftmost node in the Red Black Tree needs to be removed to be scheduled
+11. `struct proc* getuncle(struct proc* process)`: Returns the uncle node to the current process in the Red Black Tree
+12. `struct proc* getProcessToRunFromTree(struct redblackTree* tree)`: Returns the process with the lowest virtual runtime
+13. `void handleDeletionOfLeftmostNodeAndUpdateTree(struct redblackTree* tree, struct proc* p)`: Handles the situation when the leftmost node in the Red Black Tree needs to be removed to be scheduled
 
 Here is the code for the Rust library with the code for scheduler in Rust: https://github.com/vgandhi13/XV6-Rust-Library
 ## Running the Code
