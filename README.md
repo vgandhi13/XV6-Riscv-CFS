@@ -33,6 +33,25 @@ The implementation consists of two primary functions: one to provide the address
         - `void buddy_createBinaryTreeNode(binary_t **node)`: Allocates memory for the `binary_t` type `treeHead` node of the binary tree. The `offset` field of this `treeHead` will point to the address of the start of the page received from `mmap` in the `buddy_heap` function.
     - `void buddy_find_free(size_t size, void **found, binary_t **node)`: This recursive function finds a node in the binary tree that has enough available memory to allocate to a calling program.
         - `void buddy_split(binary_t **node, binary_t **leftChild, binary_t **rightChild)`: Splits a binary tree node into two other binary tree nodes to accommodate an allocation request when the requested size from the calling program is <= the size of the `binary_t` node.
+     
+1. `insertProcess(struct redblackTree* tree, struct proc* p)`
+
+Inserts a new process `p` into a red-black tree (`tree`) used for process scheduling in the xv6 operating system.
+
+1. `acquire(&tree->lock)`: Acquires the lock for the RB tree.
+2. `tree->root = treenode_insertion(tree->root, p)`: Inserts the process node while maintaining RB tree rules.
+3. `if(tree->num_of_nodes == 0)`: Updates the parent of the root if the tree was empty.
+4. `updateInsertedProcessandTreeProperties(tree, p)`: Updates properties of the inserted process and the RB tree.
+5. `recolorAndRotate(tree, p)`: Checks for RB tree violations and performs necessary rotations and recoloring.
+6. `release(&tree->lock)`: Releases the lock for the RB tree.
+
+This function is called by various xv6 OS functions:
+   - `userinit(void)`: Sets up the first user process.
+   - `fork(void)`: Creates a new process by copying the parent.
+   - `yield(void)`: Yields the CPU for one scheduling round.
+   - `wakeup(void *chan)`: Wakes up all processes sleeping on `chan`.
+   - `kill(int pid)`: Kills the process with the given `pid`.
+
 
 2. `void buddy_my_free(void *allocated)`: Frees a given region of memory back to the heap. It updates the respective binary tree node accordingly.
     - `void buddy_findTreeNode(size_t size, binary_t *node, void *offset, binary_t **foundNode)`: Recursive depth-first search approach to find the binary tree node whose `offset` field points to the same address as the `offset` parameter.
