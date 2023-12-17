@@ -38,7 +38,8 @@ Here is the code for the Rust library with the code for scheduler in Rust: https
 To run the code, follow these steps:
 
 1. Download the Riscv toolchain: https://pdos.csail.mit.edu/6.S081/2021/tools.html
-2. Build the code by running `make`.
-3. Execute the command `make qemu`.
+2. Run the command `make clean`.
+3. Build the code by running `make`.
+4. Execute the command `make qemu`.
 
 If you have any questions regarding this project, feel free to email me at vgandhi@umass.edu.
