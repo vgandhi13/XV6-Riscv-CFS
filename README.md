@@ -1,13 +1,8 @@
 # Changing Process Scheduler from RR to the Completely Fair Scheduler(CFS)
 
-Kindly go through the presentation slides and watch the recording of the presentation before looking at the README.md file to better understand the implementation through visual representations and explanation.
+Kindly go through the presentation slides along with the README file to better understand the implementation through visual representations and explanations.
 
-**Presentation Video Links:**
-
-- [Part 1 - Extension of Project 5](https://drive.google.com/file/d/1t0DcIESlLGc4VJPullohJJlVjLg10eCY/view?usp=sharing)
-- [Part 2 - Binary Buddy Allocator](https://drive.google.com/file/d/1RVVzp1fmkt_CeP4f1V09Ky14Lx2GJOCT/view?usp=sharing)
-
-**Presentation Slides Link:** [Slides](https://docs.google.com/presentation/d/1JwD6ZSrCvl3qAM70vlp1tFPzyfzNBees4rMeHBCoImU/edit?usp=sharing)
+**Presentation Slides Link:** [Slides](https://docs.google.com/presentation/d/1HegY85bpJztjZwYOP5Y0NfYT1W5NtM1ZAfBmo98Jvz4/edit?usp=sharing)
 
 
 ## 1. Project 5 Memory Allocator Extension
