@@ -17,6 +17,7 @@ The following fields were added to the process struct to account for the CFS alg
 9. `struct proc *parent_node;`
 
 ## 2. Functions Added to Kernel/Proc.c
+<img width="815" alt="Screenshot 2023-12-17 at 12 29 55 AM" src="https://github.com/vgandhi13/XV6-Riscv-CFS/assets/82404434/a9220d9b-59b0-48cf-b59e-abb2588881aa">
 
 The following functions were added to the proc.c file:
 
