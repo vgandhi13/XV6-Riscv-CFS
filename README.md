@@ -44,6 +44,17 @@ Internally, `insertProcess` employs the RB tree insertion algorithm to maintain 
 
 This function is invoked in critical sections of the operating system, such as during the initialization of the first user process (`userinit`), the creation of a new process (`fork`), yielding the CPU to another process (`yield`), waking up processes from sleep (`wakeup`), and terminating a process (`kill`). By utilizing `insertProcess`, the scheduler effectively manages the execution order of processes, ensuring fair and efficient utilization of system resources.
 
+`insertProcess(struct redblackTree* tree, struct proc* p)`
+
+Inserts a new process `p` into a red-black tree (`tree`) used for process scheduling in the xv6 operating system.
+
+1. `acquire(&tree->lock)`: Acquires the lock for the RB tree.
+2. `tree->root = treenode_insertion(tree->root, p)`: Inserts the process node while maintaining RB tree rules.
+3. `updateInsertedProcessandTreeProperties(tree, p)`: Updates properties of the inserted process and the RB tree.
+4. `recolorAndRotate(tree, p)`: Checks for RB tree violations and performs necessary rotations and recoloring.
+5. `release(&tree->lock)`: Releases the lock for the RB tree.
+
+
 
 2. `void buddy_my_free(void *allocated)`: Frees a given region of memory back to the heap. It updates the respective binary tree node accordingly.
     - `void buddy_findTreeNode(size_t size, binary_t *node, void *offset, binary_t **foundNode)`: Recursive depth-first search approach to find the binary tree node whose `offset` field points to the same address as the `offset` parameter.
