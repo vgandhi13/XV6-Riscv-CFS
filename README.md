@@ -6,7 +6,7 @@ Kindly go through the presentation slides along with the README file to better u
 
 ## 1. Update in Proc.h:
 The following fields were added to the process struct to account for the CFS algo and RBT:
-1. ` int weight` 
+1. `int weight`:
 2. `int v_runtime`       
 3. `int niceness`  
 4. `int current_run`       
