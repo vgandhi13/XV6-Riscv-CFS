@@ -1,4 +1,4 @@
-# Memory Allocator Project
+# Changing Process Scheduler from RR to the Completely Fair Scheduler(CFS)
 
 Kindly go through the presentation slides and watch the recording of the presentation before looking at the README.md file to better understand the implementation through visual representations and explanation.
 
