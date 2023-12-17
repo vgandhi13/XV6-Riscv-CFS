@@ -4,7 +4,7 @@ Kindly go through the presentation slides along with the README file to better u
 
 **Presentation Slides Link:** [Slides](https://docs.google.com/presentation/d/1HegY85bpJztjZwYOP5Y0NfYT1W5NtM1ZAfBmo98Jvz4/edit?usp=sharing)
 
-## 1. Update in Proc.h:
+## 1. Update in Kernel/Proc.h:
 The following fields were added to the process struct to account for the CFS algo and RBT:
 1. `int weight`:
 2. `int v_runtime`       
@@ -16,7 +16,7 @@ The following fields were added to the process struct to account for the CFS alg
 8. `struct proc *right_node;`
 9. `struct proc *parent_node;`
 
-## 2. Functions Added to Proc.c
+## 2. Functions Added to Kernel/Proc.c
 
 The following functions were added to the proc.c file:
 
