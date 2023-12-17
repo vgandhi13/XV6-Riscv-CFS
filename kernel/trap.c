@@ -79,7 +79,6 @@ usertrap(void)
   // give up the CPU if this is a timer interrupt.
   if(which_dev == 2) {
     myproc()->current_run = myproc()->current_run + 1;
-    //myproc()->currentRuntime = myproc()->currentRuntime + 1;
     yield();
   }
 
@@ -156,7 +155,6 @@ kerneltrap()
   // give up the CPU if this is a timer interrupt.
   if(which_dev == 2 && myproc() != 0 && myproc()->state == RUNNING) {
     myproc()->current_run = myproc()->current_run + 1;
-    //myproc()->currentRuntime = myproc()->currentRuntime + 1;
     yield();
   }
 
