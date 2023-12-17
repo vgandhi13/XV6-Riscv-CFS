@@ -4,8 +4,27 @@ Kindly go through the presentation slides along with the README file to better u
 
 **Presentation Slides Link:** [Slides](https://docs.google.com/presentation/d/1HegY85bpJztjZwYOP5Y0NfYT1W5NtM1ZAfBmo98Jvz4/edit?usp=sharing)
 
+## 1. Update in Proc.h:
+The following fields were added to the process struct to account for the CFS algo and RBT:
+1. ` int weight` 
+2. `int v_runtime`       
+3. `int niceness`  
+4. `int current_run`       
+5. `int max_exectime;`
+6. `enum procColor node_color;`
+7. `struct proc *left_node;`
+8. `struct proc *right_node;`
+9. `struct proc *parent_node;`
 
-## 1. Functions Added to Proc.c
+The following functions were added to the proc.c file:
+
+1. `void insertProcess(struct redblackTree* tree, struct proc* p)`: Inserts a new process `p` into a red-black tree (`tree`) This function is invoked in critical sections of the operating system, such as during the initialization of the first user process (`userinit`), the creation of a new process (`fork`), yielding the CPU to another process (`yield`), waking up processes from sleep (`wakeup`), and terminating a process (`kill`):
+2. `void treenode_insertion(struct proc* curProc, struct proc* newProc)`: This is a Depth First Search algorithm function that checks where to insert the new process in the red black tree based on the virtual runtime.
+3. `void updateInsertedProcessandTreeProperties(struct redblackTree* tree, struct proc* p)`: This function updates the minimum virtual runtime node that `tree->min_vRuntime` points to. It also calculates process weight and total weight of the tree based on the `niceness` value.
+4. `void recolorAndRotate(struct redblackTree* tree, struct proc* p)`: Perform recoloring and rotation on the Red Black Tree to ensure all violations of RBT properties are solved.
+5. `struct proc* getMinimumVRuntimeproc(struct proc* traversingProcess)`: Recursive Depth First Search function that finds the left-most node in the Red Black Tree.
+
+## 2. Functions Added to Proc.c
 
 The following functions were added to the proc.c file:
 
