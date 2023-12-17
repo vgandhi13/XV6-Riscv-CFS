@@ -5,11 +5,15 @@ Kindly go through the presentation slides along with the README file to better u
 **Presentation Slides Link:** [Slides](https://docs.google.com/presentation/d/1HegY85bpJztjZwYOP5Y0NfYT1W5NtM1ZAfBmo98Jvz4/edit?usp=sharing)
 
 
-## 1. Project 5 Memory Allocator Extension
+## 1. Functions Added to Proc.c
 
-The first thing I did was extend the Project 5 memory allocator by making the heap expandable and modifying `coalesce()` to merge ALL adjacent free blocks regardless of the list structure. The following components were updated to account for this:
+The following functions were added to the proc.c file:
 
-- `heap` function
+1. `insertProcess(struct redblackTree* tree, struct proc* p)`: Inserts a new process `p` into a red-black tree (`tree`) used for process scheduling in the xv6 operating system. This function is invoked in critical sections of the operating system, such as during the initialization of the first user process (`userinit`), the creation of a new process (`fork`), yielding the CPU to another process (`yield`), waking up processes from sleep (`wakeup`), and terminating a process (`kill`).:
+    - `binary_t *buddy_heap()`: Returns the head pointer to the binary tree. If the heap has not been allocated yet (treeHead is NULL), it uses `mmap` to allocate a page of memory from the OS, which acts as the heap for the code.
+        - `void buddy_createBinaryTreeNode(binary_t **node)`: Allocates memory for the `binary_t` type `treeHead` node of the binary tree. The `offset` field of this `treeHead` will point to the address of the start of the page received from `mmap` in the `buddy_heap` function.
+    - `void buddy_find_free(size_t size, void **found, binary_t **node)`: This recursive function finds a node in the binary tree that has enough available memory to allocate to a calling program.
+        - `void buddy_split(binary_t **node, binary_t **leftChild, binary_t **rightChild)`: Splits a binary tree node into two other binary tree nodes to accommodate an allocation request when the requested size from the calling program is <= the size of the `binary_t` node.
 - `coalesce` function
 - `my_malloc` function
 - `find_free` function
@@ -46,7 +50,7 @@ This function is invoked in critical sections of the operating system, such as d
 
 `insertProcess(struct redblackTree* tree, struct proc* p)`
 
-Inserts a new process `p` into a red-black tree (`tree`) used for process scheduling in the xv6 operating system.
+
 
 1. `acquire(&tree->lock)`: Acquires the lock for the RB tree.
 2. `tree->root = treenode_insertion(tree->root, p)`: Inserts the process node while maintaining RB tree rules.
