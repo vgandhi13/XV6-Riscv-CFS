@@ -36,21 +36,13 @@ The implementation consists of two primary functions: one to provide the address
      
 1. `insertProcess(struct redblackTree* tree, struct proc* p)`
 
-Inserts a new process `p` into a red-black tree (`tree`) used for process scheduling in the xv6 operating system.
+### insertProcess Function
 
-1. `acquire(&tree->lock)`: Acquires the lock for the RB tree.
-2. `tree->root = treenode_insertion(tree->root, p)`: Inserts the process node while maintaining RB tree rules.
-3. `if(tree->num_of_nodes == 0)`: Updates the parent of the root if the tree was empty.
-4. `updateInsertedProcessandTreeProperties(tree, p)`: Updates properties of the inserted process and the RB tree.
-5. `recolorAndRotate(tree, p)`: Checks for RB tree violations and performs necessary rotations and recoloring.
-6. `release(&tree->lock)`: Releases the lock for the RB tree.
+The `insertProcess` function is a key component of the xv6 operating system's scheduling mechanism. It is responsible for incorporating a newly created process into a red-black tree (RB tree) data structure used for managing the scheduling of processes. This function takes a pointer to the RB tree and the process to be inserted as parameters.
 
-This function is called by various xv6 OS functions:
-   - `userinit(void)`: Sets up the first user process.
-   - `fork(void)`: Creates a new process by copying the parent.
-   - `yield(void)`: Yields the CPU for one scheduling round.
-   - `wakeup(void *chan)`: Wakes up all processes sleeping on `chan`.
-   - `kill(int pid)`: Kills the process with the given `pid`.
+Internally, `insertProcess` employs the RB tree insertion algorithm to maintain the integrity of the tree's properties. After inserting the process into the RB tree, it ensures that relevant properties of both the tree and the inserted process are appropriately updated. Additionally, it checks for any potential violations of red-black tree rules and performs necessary rotations and recoloring to restore balance.
+
+This function is invoked in critical sections of the operating system, such as during the initialization of the first user process (`userinit`), the creation of a new process (`fork`), yielding the CPU to another process (`yield`), waking up processes from sleep (`wakeup`), and terminating a process (`kill`). By utilizing `insertProcess`, the scheduler effectively manages the execution order of processes, ensuring fair and efficient utilization of system resources.
 
 
 2. `void buddy_my_free(void *allocated)`: Frees a given region of memory back to the heap. It updates the respective binary tree node accordingly.
